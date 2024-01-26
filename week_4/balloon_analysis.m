@@ -26,5 +26,5 @@ ascent_tempC = ascent_df{:, "TempC"};
 
 fileID = fopen("ascent_data.txt", "w+");
 fprintf(fileID, '%13s %10s\n', 'ascent_alt', 'ascent_tempC');
-fprintf(fileID, '%10.1f %10.1f\n', ascent_alt, ascent_tempC);
+fprintf(fileID, '%10.1f %10.1f\n', [ascent_alt.'; ascent_tempC.']);
 fclose(fileID);
