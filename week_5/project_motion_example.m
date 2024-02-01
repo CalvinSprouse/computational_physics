@@ -25,6 +25,10 @@ tfin = findImpactTime(initial_h,initial_v,angle_launch);
 %Make a plot of the trajectory
 drawProjMotPlot(initial_h,initial_v,angle_launch,tfin);
 
+% print the range of the projectile
+proj_range = findRange(initial_v, angle_launch, tfin);
+fprintf("The projectile travelled %.2f meters.\n", proj_range);
+
 
 function drawProjMotPlot(y0,v0,launchAng,tfin)
     global g;
@@ -52,4 +56,17 @@ function t_impact = findImpactTime(y0,v0,launchAng)
     %Use the quadratic formula to find the impact time
     t_impact=(-vy0-sqrt(vy0^2+2*g*y0))/(-g);
     
+end
+
+function range = findRange(v0, launchAng, tfin)
+	% return the range of a projectile
+	% v0 : the initial speed [m/s]
+	% launchAng : the initial angle [degrees]
+	% tfin : the airtime of the projectile [s]
+
+	% calculate the x velocity
+	xvel = v0 * cosd(launchAng);
+
+	% calculate the distance traveled
+	range = xvel * tfin;
 end
