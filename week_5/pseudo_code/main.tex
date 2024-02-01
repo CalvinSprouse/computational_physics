@@ -1,0 +1,67 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+\titleformat{\section}{\fontsize{14pt}{14pt}\selectfont}{\thesection.}{1em}{}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 & 2024 February 01\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\section*{Pseudo code for linear regression algorithm.}
+Get vectors of \(x\) and \(y\) values as inputs and define \(a\) and \(b\) as outputs.
+
+\noindent
+Calculate the length of the vectors using MATLABs size function
+\begin{itemize}
+\item \(N_x = \text{size}(x)\);
+\item \(N_y = \text{size}(y)\);
+\end{itemize}
+
+\noindent
+Ensure the vectors are the same length.
+
+\noindent
+Calculate the sums using MATLAB sum function and element-wise operations:
+\begin{itemize}
+\item \(S_x = \text{sum}(x)\);
+\item \(S_y = \text{sum}(y)\);
+\item \(S_{xy} = \text{sum}(x\, \text{.*}\, y)\);
+\item \(S_{xx} = \text{sum}(x\, \text{.\string^}\ 2)\);
+\end{itemize}
+
+Solve for the constants:
+\begin{itemize}
+\item \(a = \frac{N_x \times S_{xy} - S_x\times S_y}{N_x \times S_{xx} - S_x \text{.\string^}\ 2}\);
+\item \(b = \frac{S_{xx}\times S_y - S_{xy}\times S_x}{N_x \times S_{xx} - S_x\text{.\string^}\ 2}\);
+\end{itemize}
+
+% actual code for linear regression algorithm
+% function linearRegression [a, b] = (x, y):
+%   % calculate the slope a and intercept b for some set of points
+%   % calculate the length of vectors
+%   N_x = size(x);
+%   N_y = size(y);
+%
+%   % calculate the various sums
+%   S_x = sum(x);
+%   S_y = sum(y);
+%   S_xy = sum(x .* y);
+%   S_xx = sum(x .^ 2);
+%
+%   % calculate the regression constants
+%   a = ( (N_x * S_xy) - (S_x * S_y) ) / ( (N_x * S_xx) - (S_x .^ 2) );
+%   b = ( (S_xx * S_y) - (S_xy * S_x) ) / ( (N_x * S_xx) - (S_x .^ 2) );
+% end
+
+\end{document}

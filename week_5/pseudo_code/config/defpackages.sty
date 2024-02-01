@@ -1,0 +1,67 @@
+% a package containing custom imports frequently used in math/physics homework
+
+% for more symbols see
+% https://ctan.math.illinois.edu/info/symbols/comprehensive/symbols-a4.pdf
+
+% for making custom lists
+\usepackage{enumitem}
+
+% ams packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+% for derivatives
+\usepackage{esdiff}
+
+% for pre-scripts (atomic numbers) extends amsmath
+% also includes bra-ket notation
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+% a better bold mode
+\usepackage{bm}
+
+% better matrices and tables
+\usepackage{array}
+
+% for controlling figure and graphic placement
+\usepackage{float}
+
+% allows nested figures to be captioned (i think)
+\usepackage{subcaption}
+
+% allos units to beput into math formatting!
+\usepackage{siunitx}
+% define custom units
+\DeclareSIUnit{\year}{yr}
+
+% more caption options
+\usepackage{caption}
+
+% allows for the equal spaced env used in the header
+\usepackage{tabularx}
+
+% for physics symbols (particles)
+% https://www.ctan.org/pkg/svrsymbols
+\usepackage{svrsymbols}
+
+% the phonecian alphabet is often useful
+% https://ctan.org/pkg/phoenician
+\usepackage{phoenician}
+
+% for more consistent looking astrological symbols
+\usepackage{wasysym}
+
+% the the different rule types in booktabs
+\usepackage{booktabs}
+
+% for controlling section and title formats
+\usepackage{titlesec}
+
+% must go last
+% for placing graphics, very important
+\usepackage{graphicx}
