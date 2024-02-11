@@ -1,0 +1,35 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 & 2024 February 11\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\noindent
+Pseudo-code for taking the numerical derivative of tabular data:
+\begin{enumerate}
+\item Create a list or add a column to the table to store the derivative.
+\item Enter a for-loop over the tabular data with \(i\) as the index.
+\item If the index is 1 calculate the derivative with the forward method:
+\[\frac{y_{i+1}-y_i}{x_{i+1}-x_i}.\]
+\item Elseif the index is equal to the length of the table calculate the derivative with the backward method:
+\[\frac{y_{i} - y_{i-1}}{x_i - x_{i-1}}.\]
+\item Else calculate the derivative with the center method:
+\[\frac{y_{i+1} - y_{i-1}}{x_{i+1} - x_{i-1}}.\]
+\item Store the derivative into the list/table created in step 1.
+\item Iterate until derivative is calculated.
+\end{enumerate}
+
+\end{document}
