@@ -1,0 +1,36 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 & 2024 February 11\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\noindent
+\section*{Manual Runge-Kutta.}
+Below is a table solving the differential equation
+\[\diff{x}{t} = -1.2x + 7e^{-0.3t}\]
+for \(t=[0,1.5]\text{s}\), \(h=\qty{0.5}{\second}\), \(x(t=0)=3\). The first calculation is shown in equation form, the rest show only their evaluation.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+    time $t$ & $k_1$ & $k_2$ & $x$ \\ \hline
+    0 & $\frac{1}{2}\left( -1.2\times 3 + 7e^{-0.3\times 0}\right)$ & $\frac{1}{2}\left( -1.2\left( 3+\frac{k_1}{2}\right) + 7e^{-0.3+\frac{h}{2}}\right)$ & 3 \\
+    0.5 & 0.65022 & 0.23748 & 3.9371 \\
+    1 & 0.088104 & -0.12568 & 4.1746 \\
+    1.5 & -0.19764 & -0.29960 & 4.0489 \\
+    2 &  &  & 3.7493
+    \end{tabular}
+\end{table}
+\end{document}
