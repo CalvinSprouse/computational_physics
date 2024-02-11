@@ -1,0 +1,28 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 & 2024 February 11\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\noindent
+Pseudo-code for taking the numerical derivative of tabular data using the trapezoid method:
+\begin{enumerate}
+\item Create a list or add a column to the table to store the derivative.
+\item Check that the data is evenly spaced and calculate the spacing \(h\).
+\item Calculate the area \(A\) with vector calculations where \(y\) refers to the \(y\)-vector of data:
+\[A = \frac{h}{2}\left( y(1) + y(\text{end}) + 2\left(y(2:\text{end}-1)\right) \right).\]
+\end{enumerate}
+\end{document}

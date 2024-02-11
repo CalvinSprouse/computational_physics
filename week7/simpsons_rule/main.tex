@@ -1,0 +1,26 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 & 2024 February 11\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\noindent
+\section*{Simpson's rule with sums.}
+Let \(h=(a-b)/N\) for some function \(f\), large positive integer \(N\), and integration limits \(a\) and \(b\). Then,
+\begin{align*}
+    A \approx \frac{h}{3}\sum_{i=0}^{N-2}\bigg[ f(a+ih) + 4f(a+(i+1)h) + f(a + (i+2)h) \bigg].
+\end{align*}
+\end{document}

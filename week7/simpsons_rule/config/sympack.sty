@@ -1,0 +1,103 @@
+% a custom package containing fun symbols
+
+% for more symbols see
+% https://ctan.math.illinois.edu/info/symbols/comprehensive/symbols-a4.pdf
+
+% well-made dingbats
+% https://www.ctan.org/pkg/bbding
+\usepackage{bbding}
+
+% more fun symbols
+% https://www.ctan.org/pkg/stix
+% caused too-many-symbols error
+% \usepackage{stix}
+
+% heiroglyphics
+% https://www.ctan.org/pkg/hieroglf
+\usepackage{hieroglf}
+
+% runes
+% https://www.ctan.org/pkg/allrunes
+% overdefined \swdefault so need to undefine it
+% \swdefault is just \text{sw}
+\let\swdefault\undefined
+\usepackage{allrunes}
+
+% chess pieces
+% https://www.ctan.org/pkg/skak
+\usepackage{skak}
+
+% more symbols, namely clock and geometry
+% https://www.ctan.org/pkg/ifsym
+\usepackage{ifsym}
+
+% magical staves
+% https://www.ctan.org/pkg/staves
+\usepackage{staves}
+
+% rubiks cube rotations
+% https://www.ctan.org/pkg/rubikcube
+% overdefined \x
+\let\x\undefined
+\usepackage{rubikcube}
+
+
+% astrological symbols
+% https://www.ctan.org/pkg/starfont
+% \usepackage{starfont}
+
+% define some aliases for astrological symbols and the mode
+% \starfontserif
+% \newcommand{\sun}{\text{\Sun}}
+% \newcommand{\moon}{\text{\Moon}}
+% \newcommand{\mercury}{\text{\Mercury}}
+% \newcommand{\venus}{\text{\Venus}}
+% \newcommand{\mars}{\text{\Mars}}
+% \newcommand{\jupiter}{\text{\Jupiter}}
+% \newcommand{\saturn}{\text{\Saturn}}
+% \newcommand{\uranus}{\text{\Uranus}}
+% \newcommand{\neptune}{\text{\Neptune}}
+% \newcommand{\pluto}{\text{\Pluto}}
+% \newcommand{\aries}{\text{\Aries}}
+% \newcommand{\taurus}{\text{\Taurus}}
+% \newcommand{\cancer}{\text{\Cancer}}
+% \newcommand{\leo}{\text{\Leo}}
+% \newcommand{\virgo}{\text{\Virgo}}
+% \newcommand{\libra}{\text{\Libra}}
+% \newcommand{\scorpio}{\text{\Scorpio}}
+% \newcommand{\capricorn}{\text{\Capricorn}}
+% \newcommand{\pisces}{\text{\Pisces}}
+% \newcommand{\ceres}{\text{\Ceres}}
+% \newcommand{\pallas}{\text{\Pallas}}
+% \newcommand{\juno}{\text{\Juno}}
+% \newcommand{\vesta}{\text{\Vesta}}
+% \newcommand{\chiron}{\text{\Chiron}}
+% \newcommand{\cupido}{\text{\Cupido}}
+% \newcommand{\hades}{\text{\Hades}}
+% \newcommand{\zeus}{\text{\Zeus}}
+% \newcommand{\kronos}{\text{\Kronos}}
+% \newcommand{\apollon}{\text{\Apollon}}
+% \newcommand{\admetos}{\text{\Admetos}}
+% \newcommand{\vulkanus}{\text{\Vulkanus}}
+% \newcommand{\poseidon}{\text{\Poseidon}}
+% \newcommand{\hygiea}{\text{\Hygiea}}
+
+% more generically useful symbols
+% https://www.ctan.org/pkg/ifsym
+\usepackage{ifsym}
+
+% import coffee stains
+% for corner coffee: (\cofeAm{0.12}{1}{25}{0.5\paperwidth}{0.3\paperheight})
+% can alter alpha (1st) to decrease through pages like stain propogation
+\usepackage{../../config/coffee4}
+
+% Modified \replicateStain command to call \cofeAm with random offsets
+% sixth input is the page since the initial stain
+% use \def\myvariable{value} to define the original positions
+\newcommand{\replicateStain}[6]{%
+    % Generate random offsets
+    \pgfmathsetmacro{\randomxoffset}{rand*25}
+    \pgfmathsetmacro{\randomyoffset}{rand*25}
+    % Call the original \cofeAm with random offsets
+    \cofeAm{#1*(0.7)^(#6-1)}{#2}{#3}{#4+\randomxoffset}{#5+\randomyoffset}%
+}
