@@ -1,0 +1,31 @@
+% document style header
+\documentclass[a4paper, 12pt]{config/homework}
+
+% import default packages
+\usepackage{config/defpackages}
+% import custom math commands
+\usepackage{config/domath}
+% \usepackage{listings}
+\usepackage{minted}
+\usemintedstyle{vs}
+
+% end preamble
+\begin{document}
+
+% document title
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+Calvin Sprouse & PHYS361 ODE's & 2024 February 28\\
+\midrule
+\end{tabularx}
+
+% homework problems begin
+\vspace{\baselineskip}\noindent
+Separate the following second order differential equation into two first order differential equations:
+\[\diff[2]{y}{t} + 5\left(\diff{y}{t}\right)^2 - 6y + e^{\sin(t)} = 0, \quad
+\frac{1}{g}\diff[2]{h}{t} = \frac{T}{w} - 1 - \frac{0.008}{w}\left(\diff{h}{t}\right)^2.\]
+
+\vspace{\baselineskip}\noindent
+Define \(\vec{u}\) and \(\diff{\vec{u}}{t}\) for the ODE's above and write pseudo code to define a \texttt{dudt} function similar to the previous lecture assignment for each ODE.
+
+\end{document}
