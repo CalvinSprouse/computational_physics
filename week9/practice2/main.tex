@@ -25,7 +25,43 @@ Separate the following second order differential equation into two first order d
 \[\diff[2]{y}{t} + 5\left(\diff{y}{t}\right)^2 - 6y + e^{\sin(t)} = 0, \quad
 \frac{1}{g}\diff[2]{h}{t} = \frac{T}{w} - 1 - \frac{0.008}{w}\left(\diff{h}{t}\right)^2.\]
 
+\noindent
+For ODE 1 we have
+\begin{align*}
+\diff{y}{t} &= q, \\
+\diff{q}{t} &= 6y - 5q^2 - \exp\left[\sin(t)\right].
+\end{align*}
+
+\noindent
+For ODE 2 we have
+\begin{align*}
+\diff{h}{t} &= k, \\
+\diff{k}{t} &= \frac{gT}{w} -g - 0.008\frac{g}{w}k^2.
+\end{align*}
+
 \vspace{\baselineskip}\noindent
 Define \(\vec{u}\) and \(\diff{\vec{u}}{t}\) for the ODE's above and write pseudo code to define a \texttt{dudt} function similar to the previous lecture assignment for each ODE.
+
+\noindent For ODE 1 we have
+\[\vec{u} = \matr{y \\ q}, \quad \text{d}u\text{d}t = \matr{q \\ 6y - \exp\left[\sin(t)\right] - 5q^2}.\]
+Where a \texttt{dudt} function might look as follows:
+\begin{minted}{matlab}
+function dudt = f(t, u)
+    dudt = zeros(2, 1);
+    dudt(1) = u(2);
+    dudt(2) = 6*u(1) - 5*u(2).^2 - exp(sin(t));
+end
+\end{minted}
+
+\noindent For ODE 2 we have
+\[\vec{u} = \matr{h \\ k}, \quad \text{d}u\text{d}t = \matr{k \\ \frac{gT}{w} -g - 0.008\frac{g}{w}k^2}.\]
+Where a \texttt{dudt} function might look as follows:
+\begin{minted}{matlab}
+function dudt = f(t, u, T, g, w)
+    dudt = zeros(2, 1);
+    dudt(1) = u(2);
+    dudt(2) = (g*T/w) - g - (0.008*g/w)*u(2).^2
+end
+\end{minted}
 
 \end{document}
