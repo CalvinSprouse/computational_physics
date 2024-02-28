@@ -44,7 +44,7 @@ The general form is
 \[\diff{\vec{u}}{t} = \vec{F}(t,\vec{u}),\]
 where \(\vec{u}\) and \(\diff{\vec{u}}{t}\) are arrays.
 
-\vspace{\baselineskip}\noindent
+\pagebreak\noindent
 Write a \texttt{dudt} function similar to the one above that could be used with MATLAB's built in solvers to solve the following two coupled ODE's:
 \begin{align*}
 \diff{x}{t} &= x -yt,
@@ -70,7 +70,7 @@ Since these equations are no more complicated than above, I can just write the c
 function dudt = f(t,u)
     dudt = zeros(2,1);
     dudt(1) = 2*u(1) + 2*u(2);
-    dudt(2) = 2*u(1) - u(1);
+    dudt(2) = 2*u(1) - u(2);
 end
 \end{minted}
 
@@ -80,5 +80,9 @@ Write code to solve the ODE's in the previous task from \(t=0\) to \(t=1.2\) wit
 x &= \frac{e^{-2t}\left(8e^{5t}-3\right)}{5},
 \\ y &= \frac{2e^{-2t}\left(2e^{5t}+3\right)}{5}.
 \end{align*}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{../ode_comp.pdf}
+\end{figure}
 
 \end{document}
