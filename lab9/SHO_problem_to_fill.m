@@ -28,19 +28,19 @@ initvals = [x0, v0];
 xbi = ubi(:, 1);
 vbi = ubi(:, 2);
 
-% solve using 2nd order RK2
+% solve using 2nd order Runge-Kutta
 [trk2, urk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 0.1, initvals);
 xrk2 = urk2(1, :);
 vrk2 = urk2(2, :);
 
-% solve using 4th order RK4
+% solve using 4th order Runge-Kutta
 [trk4, urk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 0.1, initvals);
 xrk4 = urk4(1, :);
 vrk4 = urk4(2, :);
 
 % plot the comparison
 figure;
-plt = plot(xbi, vbi, "-w", xrk2, vrk2, "-r", xrk4, vrk4, "-b");
+plt = plot(xbi, vbi, "-w", xrk2, vrk2, "--r", xrk4, vrk4, "-b");
 % plt = plot(xbi, vbi, "-w");
 % plt = plot(xrk2, vrk2, "--w");
 plt(1).Parent.FontWeight = "normal";
@@ -54,39 +54,68 @@ exportgraphics(gcf, "ode_comp.pdf");
 
 
 % make the subplots
-[x1rk4, v1rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 1, initvals);
-[x1rk2, v1rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 1, initvals);
-[x2rk4, v2rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 5, initvals);
-[x2rk2, v2rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 5, initvals);
-[x3rk4, v3rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 10, initvals);
-[x3rk2, v3rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 10, initvals);
-[x4rk4, v4rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 50, initvals);
-[x4rk2, v4rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 50, initvals);
+% h=1
+[t1rk4, u1rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 1, initvals);
+[t1rk2, u1rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 1, initvals);
+% h=5
+[t2rk4, u2rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 5, initvals);
+[t2rk2, u2rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 5, initvals);
+% h=10
+[t3rk4, u3rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 10, initvals);
+[t3rk2, u3rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 10, initvals);
+% h=50
+[t4rk4, u4rk4] = rk4(@(t,u) sho(t,u,omega), tmin, tmax, 50, initvals);
+[t4rk2, u4rk2] = rk2(@(t,u) sho(t,u,omega), tmin, tmax, 50, initvals);
+
+% extract the x positions and velocities
+% from rk2
+x1rk2 = u1rk2(1,:);
+v1rk2 = u1rk2(2,:);
+x2rk2 = u2rk2(1,:);
+v2rk2 = u2rk2(2,:);
+x3rk2 = u3rk2(1,:);
+v3rk2 = u3rk2(2,:);
+x4rk2 = u4rk2(1,:);
+v4rk2 = u4rk2(2,:);
+% from rk4
+x1rk4 = u1rk4(1,:);
+v1rk4 = u1rk4(2,:);
+x2rk4 = u2rk4(1,:);
+v2rk4 = u2rk4(2,:);
+x3rk4 = u3rk4(1,:);
+v3rk4 = u3rk4(2,:);
+x4rk4 = u4rk4(1,:);
+v4rk4 = u4rk4(2,:);
 
 % plot results
-% subplot(2,2,1);
-% plot(x1rk4, v1rk4, "-w", x1rk2, v1rk2, "--w");
-% xlabel("x(t) [m]");
-% ylabel("v(t) [m/s]");
-% title('h=1');
-% 
-% subplot(2,2,2);
-% plot(x2rk4, v2rk4, "-w", x2rk2, v2rk2, "--w");
-% xlabel("x(t) [m]");
-% ylabel("v(t) [m/s]");
-% title('h=5');
-% 
-% subplot(2,2,3);
-% plot(x3rk4, v3rk4, "-w", x3rk2, v3rk2, "--w");
-% xlabel("x(t) [m]");
-% ylabel("v(t) [m/s]");
-% title('h=10');
-% 
-% subplot(2,2,4);
-% plot(x4rk4, v4rk4, "-w", x4rk2, v4rk2, "--w");
-% xlabel("x(t) [m]");
-% ylabel("v(t) [m/s]");
-% title('h=50');
+subplot(2,2,1);
+plot(x1rk4, v1rk4, "-r", x1rk2, v1rk2, "-b", xbi, vbi, "-w");
+% plot(x1rk4, v1rk4, "-r", x1rk2, v1rk2, "-b");
+xlabel("x(t) [m]");
+ylabel("v(t) [m/s]");
+title('h=1');
+
+subplot(2,2,2);
+plot(x2rk4, v2rk4, "-r", x2rk2, v2rk2, "-b", xbi, vbi, "-w");
+% plot(x2rk4, v2rk4, "-r", x2rk2, v2rk2, "-b");
+xlabel("x(t) [m]");
+ylabel("v(t) [m/s]");
+title('h=5');
+
+subplot(2,2,3);
+plot(x3rk4, v3rk4, "-r", x3rk2, v3rk2, "-b", xbi, vbi, "-w");
+% plot(x3rk4, v3rk4, "-r", x3rk2, v3rk2, "-b");
+xlabel("x(t) [m]");
+ylabel("v(t) [m/s]");
+title('h=10');
+
+subplot(2,2,4);
+plot(x4rk4, v4rk4, "-r", x4rk2, v4rk2, "-b", xbi, vbi, "-w");
+% plot(x4rk4, v4rk4, "-r", x4rk2, v4rk2, "-b");
+xlabel("x(t) [m]");
+ylabel("v(t) [m/s]");
+title('h=50');
+exportgraphics(gcf, "ode_corners.pdf");
 
 
 % define dudt function for ode45

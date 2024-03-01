@@ -29,6 +29,7 @@ title("Comparison of ode45 and analytic solutions to ODE", FontWeight="normal");
 legend("ode45", "analytic", Location="northwest", EdgeColor="none");
 exportgraphics(gcf, "ode_comp.pdf");
 
+
 % write function here
 function dudt = f(~, u)
 	dudt = zeros(2, 1);
